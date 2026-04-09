@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -g -Wall -std=c++11
 TARGET = P2
-SRCS = main.cpp token.cpp scanner.cpp testScanner.cpp
+SRCS = main.cpp token.cpp scanner.cpp testScanner.cpp parser.cpp node.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = token.h scanner.h testScanner.h
+HEADERS = token.h scanner.h testScanner.h parser.h node.h
 
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET)

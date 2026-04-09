@@ -4,12 +4,14 @@
 #include <iomanip>
 
 #include "testScanner.h"
+#include "parser.h"
 
 using namespace std;
 
 int main(int argc, char*argv[]) {
     string filename;
     vector<token> tokenScanner;
+    node_t *tree;
 
     //Checks number of arguments in commmand line
     if(argc > 2)    {
@@ -42,12 +44,8 @@ int main(int argc, char*argv[]) {
             return -1;
         }
     }
-    for(int i = 0; tokenScanner.at(i).tokenType != 0 && i < tokenScanner.size(); i++)  {
-        cout << "t" << setw(7) << left << tokenScanner.at(i).tokenType << " token ";
-        cout << setw(8) << tokenScanner.at(i).instance;
-        cout << setw(8) << right << tokenScanner.at(i).lineNum << endl;
-    }
-    cout << "EOFTk" << endl;
+    
+    tree = parser(tokenScanner);
 
     return 0;
 }
