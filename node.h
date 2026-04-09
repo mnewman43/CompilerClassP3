@@ -10,6 +10,7 @@ using namespace std;
     struct node_t   {
         int level;
         int charVal;
+        string nonterminal;
         vector<token> tk;
         node_t* left;
         node_t* right;
