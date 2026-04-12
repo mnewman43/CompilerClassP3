@@ -5,13 +5,14 @@
 
 #include "testScanner.h"
 #include "parser.h"
+#include "testTree.h"
 
 using namespace std;
 
 int main(int argc, char*argv[]) {
     string filename;
     vector<token> tokenScanner;
-    node_t *tree;
+    node_t *tree = new node_t;
 
     //Checks number of arguments in commmand line
     if(argc > 2)    {
@@ -46,6 +47,13 @@ int main(int argc, char*argv[]) {
     }
     
     tree = parser(tokenScanner);
+
+    ofstream outFile;
+
+    cout << tree->nonterminal << endl;
+    outFile.open(filename + ".preorder");
+
+    printTree(tree->right, outFile, 0);
 
     return 0;
 }
