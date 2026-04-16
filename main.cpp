@@ -5,13 +5,14 @@
 
 #include "testScanner.h"
 #include "parser.h"
-#include "testTree.h"
+#include "semantics.h"
 
 using namespace std;
 
 int main(int argc, char*argv[]) {
     string filename;
     vector<token> tokenScanner;
+    vector<string> statSem;
     node_t *tree = new node_t;
 
     //Checks number of arguments in commmand line
@@ -48,12 +49,13 @@ int main(int argc, char*argv[]) {
     
     tree = parser(tokenScanner);
 
-    ofstream outFile;
+    statSem = semantics(tokenScanner);
 
-    cout << tree->nonterminal << endl;
-    outFile.open(filename + ".preorder");
-
-    printTree(tree->right, outFile, 0);
+    cout << "Symbol Table: " << endl;
+    for(int i = 0; i < statSem.size(); i++)   {
+        cout << statSem.at(i) << " ";
+    }
+    cout << endl;
 
     return 0;
 }

@@ -1,7 +1,7 @@
 #include "parser.h"
 
 node_t *parser(vector<token> tkList)    {
-    node_t *root;
+    node_t *root = new node_t;
     vector<token> childTk(tkList);
     childTk.pop_back();     //Removes the EOFtk from the token list meant to go into S
     root->right = S(childTk);
