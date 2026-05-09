@@ -6,6 +6,7 @@
 #include "testScanner.h"
 #include "parser.h"
 #include "semantics.h"
+#include "codeGen.h"
 
 using namespace std;
 
@@ -51,11 +52,16 @@ int main(int argc, char*argv[]) {
 
     statSem = semantics(tokenScanner);
 
-    cout << "Symbol Table: " << endl;
-    for(int i = 0; i < statSem.size(); i++)   {
-        cout << statSem.at(i) << " ";
+    ofstream outFile;
+    outFile.open(filename + ".asm");
+
+
+    cout << "Beginning code generation..." << endl;
+    codeGen(tree, tokenScanner, outFile, statSem);
+    outFile << "STOP" << endl;
+    for(int i = 0; i < statSem.size(); i++) {
+        outFile << statSem.at(i) << " 0" << endl;
     }
-    cout << endl;
 
     return 0;
 }

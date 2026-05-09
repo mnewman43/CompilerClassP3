@@ -6,7 +6,6 @@ token scanner(string val, int line) {
     tk.instance = val;
     tk.lineNum = line;
 
-    
 
     for(int i = 0; i < val.size(); i++) {
         if((!isdigit(val[i]) && !isalpha(val[i])) && (static_cast<int>(val[i]) < 32 && static_cast<int>(val[i]) > 47))    {

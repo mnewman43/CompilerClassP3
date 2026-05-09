@@ -1,6 +1,7 @@
 #include "semantics.h"
 
 vector<string> semantics(vector<token> tokenScanner)    {
+    cout << "Beginning semantics generation..." << endl;
     vector<string> s;
        for(int i = 0; i < tokenScanner.size() - 1; i++)    {
         if(tokenScanner.at(i).instance == "$")  {

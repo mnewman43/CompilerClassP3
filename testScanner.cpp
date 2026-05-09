@@ -5,6 +5,8 @@ vector<token> testScanner(ifstream &inFile) {
     int line = 1;
     bool comment = false;   //Used to indicate when a phrase is in a comment
 
+    cout << "Scanning tokens..." << endl;
+
     while(!inFile.eof())    {
         string lineVal, val;
         vector<string> lineStr;
